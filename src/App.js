@@ -8,7 +8,6 @@ function App() {
   const [year,setYear] = useState("1960")
   const [name,setName] = useState([])
   const [tenData,setTen] =useState([])
-useEffect(()=>{
   const getdata=async()=>{
     try{
       let res= await fetch("https://codejudge-question-artifacts.s3.ap-south-1.amazonaws.com/poplution-countries-yearwise.json")
@@ -41,12 +40,14 @@ useEffect(()=>{
 
     }
   } 
+useEffect(()=>{
   getdata()
 },[])
 function handleChange(e){
- 
+ setYear(e.target.value)
+ getdata();
 }
-
+console.log(year)
   console.log(tenData)
   return (
     <div className="App">
